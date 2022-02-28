@@ -1,0 +1,40 @@
+{
+    "name": "techenby/octoprint-sdk",
+    "description": "A PHP SDK for OctoPrint.",
+    "keywords": ["octoprint", "sdk"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/techenby/octoprint-sdk/issues",
+        "source": "https://github.com/techenby/octoprint-sdk"
+    },
+    "authors": [
+        {
+            "name": "Andy Newhouse",
+            "email": "hi@andymnewhouse.me"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.3.1|^7.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.3.1",
+        "phpunit/phpunit": "^8.4|^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TechEnby\\OctoPrint\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
