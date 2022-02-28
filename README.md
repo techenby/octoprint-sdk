@@ -48,7 +48,7 @@ $files = $pikachu->files();
 
 ## Contributing
 
-Thank you for considering contributing to OctoPrint SDK! You can read the contribution guide [here](.github/CONTRIBUTING.md).
+Thank you for considering contributing to OctoPrint SDK! All pull requests are welcome, please follow the conventions set out in existing files.
 
 ## Security Vulnerabilities
 
