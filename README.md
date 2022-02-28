@@ -17,7 +17,7 @@ composer require techenby/octoprint-sdk
 You can create an instance of the SDK like so:
 
 ```php
-$pikachu = new TechEnby\OctoPrint(TOKEN_HERE);
+$pikachu = new TechEnby\OctoPrint(PRINTER_URL, API_TOKEN);
 ```
 
 Using the `OctoPrint` instance you may perform multiple actions as well as retrieve the different resources OctoPrint's API provides:
