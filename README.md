@@ -1,5 +1,10 @@
 # OctoPrint SDK
 
+<a href="https://github.com/techenby/octoprint-sdk/actions"><img src="https://github.com/techenby/octoprint-sdk/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/techenby/octoprint-sdk"><img src="https://img.shields.io/packagist/dt/techenby/octoprint-sdk" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/techenby/octoprint-sdk"><img src="https://img.shields.io/packagist/v/techenby/octoprint-sdk" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/techenby/octoprint-sdk"><img src="https://img.shields.io/packagist/l/techenby/octoprint-sdk" alt="License"></a>
+
 WORK IN PROGRESS
 
 The [OctoPrint](https://octoprint.org/) SDK provides an expressive interface for interacting with [OctoPrint's Rest API](https://docs.octoprint.org/en/master/api/files.html) and managing OctoPrint instances servers. The structure of this repository is based on the [Laravel Forge SDK](https://github.com/laravel/forge-sdk).
