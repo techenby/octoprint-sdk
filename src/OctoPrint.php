@@ -11,6 +11,7 @@ class OctoPrint
         Actions\ManagesAuthentication,
         Actions\ManagesConnection,
         Actions\ManagesFiles,
+        Actions\ManagesJobs,
         Actions\ManagesServer,
         Actions\ManagesVersion;
 

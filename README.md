@@ -49,14 +49,14 @@ $files = $pikachu->files();
 | **File operations**                                                                                                                                        |
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
 | Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
-| Upload file                                           | POST `/api/files/{location}`                  | `$octoPrint->uploadFile($location, $path, $file)`  |
-| Create folder                                         | POST `/api/files/{location}`                  | `$octoPrint->createFolder($location, $path)`       |
+| Upload file                                           | POST `/api/files/{location}`                  |                                                    |
+| Create folder                                         | POST `/api/files/{location}`                  |                                                    |
 | Retrieve a specific file's or folder's information    | GET `/api/files/{location}/{filename}`        | `$octoPrint->file($location, $path)`               |
 | Issue a file command                                  | POST `/api/files/{location}/{path}`           |                                                    |
 | Delete file                                           | DELETE `/api/files/{location}/{path}`         |                                                    |
 | **Job operations**                                                                                                                                         |
-| Issue a job command                                   | POST `/api/job`                               |                                                    |
-| Retrieve information about the current job            | GET `/api/job`                                |                                                    |
+| Issue a job command                                   | POST `/api/job`                               | `$octoPrint->start()`  `$octoPrint->cancel()`  `$octoPrint->restart()`  `$octoPrint->pause()` |
+| Retrieve information about the current job            | GET `/api/job`                                | `$octoPrint->job()`                                |
 | **Languages**                                                                                                                                              |
 | Retrieve installed language packs                     | GET `/api/languages`                          |                                                    |
 | Upload a language pack                                | POST `/api/languages`                         |                                                    |
