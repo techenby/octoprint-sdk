@@ -45,7 +45,9 @@ $files = $pikachu->files();
 | **Connection handling**                                                                                                                                    |
 | Get connection settings                               | GET `/api/connection`                         | `$octoPrint->connection()`                         |
 | Get connection state                                  |                                               | `$octoPrint->state()`                              |
-| Issue a connection command                            | POST `/api/connection`                        | `$octoPrint->connect()` `$octoPrint->dissconect()` |
+| _Issue a connection command_                          | POST `/api/connection`                        |                                                    |
+| Connect OctoPrint to printer                          |                                               | `$octoPrint->connect()`                            |
+| Disconnect OctoPrint from printer                     |                                               | `$octoPrint->dissconect()`                         |
 | **File operations**                                                                                                                                        |
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
 | Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
@@ -55,16 +57,26 @@ $files = $pikachu->files();
 | Issue a file command                                  | POST `/api/files/{location}/{path}`           | :x:                                                |
 | Delete file                                           | DELETE `/api/files/{location}/{path}`         | :x:                                                |
 | **Job operations**                                                                                                                                         |
-| Issue a job command                                   | POST `/api/job`                               | `$octoPrint->start()`  `$octoPrint->cancel()`  `$octoPrint->restart()`  `$octoPrint->pause()` |
+| _Issue a job command_                                 | POST `/api/job`                               |                                                    |
+| Start the print of the currently selected file        |                                               | `$octoPrint->start()`                              |
+| Cancel current job                                    |                                               | `$octoPrint->cancel()`                             |
+| Restart job with selected file from beginning         |                                               | `$octoPrint->restart()`                            |
+| Pause/Resume/Toggle current job                       |                                               | `$octoPrint->pause($action)`                       |
 | Retrieve information about the current job            | GET `/api/job`                                | `$octoPrint->job()`                                |
 | **Languages**                                                                                                                                              |
-| Retrieve installed language packs                     | GET `/api/languages`                          | :x:                                                |
+| Retrieve installed language packs                     | GET `/api/languages`                          | `$octoPrint->languages()`                          |
 | Upload a language pack                                | POST `/api/languages`                         | :x:                                                |
-| Delete a language pack                                | DELETE `/api/languages/{locale}/{pack}`       | :x:                                                |
+| Delete a language pack                                | DELETE `/api/languages/{locale}/{pack}`       | `$octoPrint->deleteLanguage($locale, $pack)`       |
 | **Printer operations**                                                                                                                                     |
-| Retrieve the current printer state                    | GET `/api/printer`                            | :x:                                                |
-| Issue a print head command                            | POST `/api/printer/printhead`                 | :x:                                                |
-| Issue a total command                                 | POST `/api/printer/tool`                      | :x:                                                |
+| Retrieve the current printer state                    | GET `/api/printer`                            | `$octoPrint->printer()`                            |
+| _Issue a print head command_                          | POST `/api/printer/printhead`                 |                                                    |
+| Jog the print head                                    |                                               | `$octoPrint->jog($x, $y, $z, $absolute, $speed)`   |
+| Home the print head                                   |                                               | `$octoPrint->home($axes)`                          |
+| Change the feedrate factor                            |                                               | `$octoPrint->feedrate($factor)`                    |
+| _Issue a total command_                               | POST `/api/printer/tool`                      |                                                    |
+| Set the target temperature                            |                                               | `$octoPrint->targetTemp($temperature)`             |
+| Set the offset temperature                            |                                               | `$octoPrint->offsetTemp($temperature)`             |
+| Select printer's current tool                         |                                               | `$octoPrint->selectTool($tool)`                    |
 | Retrieve the current tool state                       | GET `/api/printer/tool`                       | :x:                                                |
 | Issue a bed command                                   | POST `/api/printer/bed`                       | :x:                                                |
 | Retrieve the current bed state                        | GET `/api/printer/bed`                        | :x:                                                |
@@ -119,11 +131,6 @@ $files = $pikachu->files();
 | Update a user's settings                              | PATCH `/api/access/users/{username}/settings` | :x:                                                |
 | Regenerate a user's api key                           | POST `/api/access/users/{username}/apikey`    | :x:                                                |
 | Delete a user's api key                               | DELETE `/api/access/users/{username}/apikey`  | :x:                                                |
-| **Util**                                                                                                                                                   |
-| Various tests                                         | POST `/api/util/test`                         | :x:                                                |
-| **Wizard**                                                                                                                                                 |
-| Retrieve additional data about registered wizards     | GET `/setup/wizard`                           | :x:                                                |
-| Finish wizards                                        | POST `/setup/wizard`                          | :x:                                                |
 
 ## Contributing
 

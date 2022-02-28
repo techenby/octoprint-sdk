@@ -12,6 +12,8 @@ class OctoPrint
         Actions\ManagesConnection,
         Actions\ManagesFiles,
         Actions\ManagesJobs,
+        Actions\ManagesLanguages,
+        Actions\ManagesPrinter,
         Actions\ManagesServer,
         Actions\ManagesVersion;
 
