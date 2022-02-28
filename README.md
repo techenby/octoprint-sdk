@@ -30,7 +30,7 @@ $files = $pikachu->files();
 
 | **Resource**                                          | **Request**                                   | **Method**                                         |
 |-------------------------------------------------------|-----------------------------------------------|----------------------------------------------------|
-| ##General Information                                                                                                                                  |
+| **General Information**                                                                                                                                    |
 | Login                                                 | POST `/api/login`                             | `$octoPrint->login()`                              |
 | Current User                                          | GET `/api/currentuser`                        | `$octoPrint->currentUser()`                        |
 | **Version Information**                                                                                                                                    |
