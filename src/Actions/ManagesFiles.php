@@ -11,8 +11,14 @@ trait ManagesFiles
      *
      * @return \Laravel\Forge\Resources\File[]
      */
-    public function files($recursive = true)
+    public function files($recursive = true, $location = null)
     {
+        if($location) {
+            return $this->transformCollection(
+                $this->get("files/{$location}", ['query' => ['recursive' => $recursive]])['files'], File::class
+            );
+        }
+
         return $this->transformCollection(
             $this->get('files', ['query' => ['recursive' => $recursive]])['files'], File::class
         );

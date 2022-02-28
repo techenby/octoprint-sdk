@@ -8,7 +8,7 @@ use TechEnby\OctoPrint\Resources\User;
 class OctoPrint
 {
     use MakesHttpRequests,
-        Actions\ManagesCurrentUser,
+        Actions\ManagesAuthentication,
         Actions\ManagesConnection,
         Actions\ManagesFiles,
         Actions\ManagesServer,

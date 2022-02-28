@@ -30,22 +30,22 @@ $files = $pikachu->files();
 
 | **Resource**                                          | **Request**                                   | **Method**                                         |
 |-------------------------------------------------------|-----------------------------------------------|----------------------------------------------------|
-| **General Information**                                                                                                                                    |
-| Login                                                 | POST `/api/login`                             |                                                    |
-| Logout                                                | POST `/api/logout`                            |                                                    |
-| Current User                                          | GET `/api/currentuser`                        |                                                    |
-| Version Information                                                                                                                                        |
+| ##**General Information**                                                                                                                                  |
+| Login                                                 | POST `/api/login`                             | `$octoPrint->login()`                              |
+| Current User                                          | GET `/api/currentuser`                        | `$octoPrint->currentUser()`                        |
+| **Version Information**                                                                                                                                    |
 | Version Information                                   | GET `/api/version`                            | `$octoPrint->version()`                            |
 | **Server Information**                                                                                                                                     |
 | Server information                                    | GET `/api/server`                             | `$octoPrint->server()`                             |
-| Connection handling                                                                                                                                        |
+| **Connection handling**                                                                                                                                    |
 | Get connection settings                               | GET `/api/connection`                         | `$octoPrint->connection()`                         |
 | Get connection state                                  |                                               | `$octoPrint->state()`                              |
 | Issue a connection command                            | POST `/api/connection`                        | `$octoPrint->connect()` `$octoPrint->dissconect()` |
 | **File operations**                                                                                                                                        |
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
-| Retrieve fiels from specific location                 | GET `/api/files/{location}`                   |                                                    |
-| Upload file or create folder                          | POST `/api/files/{location}`                  |                                                    |
+| Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
+| Upload file                                           | POST `/api/files/{location}`                  | `$octoPrint->uploadFile($location, $path, $file)`  |
+| Create folder                                         | POST `/api/files/{location}`                  | `$octoPrint->createFolder($location, $path)`       |
 | Retrieve a specific file's or folder's information    | GET `/api/files/{location}/{filename}`        | `$octoPrint->file($location, $path)`               |
 | Issue a file command                                  | POST `/api/files/{location}/{path}`           |                                                    |
 | Delete file                                           | DELETE `/api/files/{location}/{path}`         |                                                    |
