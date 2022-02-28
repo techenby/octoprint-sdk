@@ -26,7 +26,7 @@ Using the `OctoPrint` instance you may perform multiple actions as well as retri
 $files = $pikachu->files();
 ```
 
-## Currently implemented endpoints
+## Rest Endpoints and SDK Methods
 
 | **Resource**                                          | **Request**                                   | **Method**                                         |
 |-------------------------------------------------------|-----------------------------------------------|----------------------------------------------------|
