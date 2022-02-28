@@ -73,7 +73,7 @@ $files = $pikachu->files();
 | Jog the print head                                    |                                               | `$octoPrint->jog($x, $y, $z, $absolute, $speed)`   |
 | Home the print head                                   |                                               | `$octoPrint->home($axes)`                          |
 | Change the feedrate factor                            |                                               | `$octoPrint->feedrate($factor)`                    |
-| _Issue a total command_                               | POST `/api/printer/tool`                      |                                                    |
+| _Issue a tool command_                                | POST `/api/printer/tool`                      |                                                    |
 | Set the target temperature                            |                                               | `$octoPrint->targetTemp($temperature)`             |
 | Set the offset temperature                            |                                               | `$octoPrint->offsetTemp($temperature)`             |
 | Select printer's current tool                         |                                               | `$octoPrint->selectTool($tool)`                    |
