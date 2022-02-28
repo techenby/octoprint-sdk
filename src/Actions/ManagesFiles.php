@@ -14,7 +14,7 @@ trait ManagesFiles
     public function files($recursive = true)
     {
         return $this->transformCollection(
-            $this->get("files?recursive={$recursive}")['files'], File::class
+            $this->get('files', ['query' => ['recursive' => $recursive]])['files'], File::class
         );
     }
 

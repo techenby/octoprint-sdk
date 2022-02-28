@@ -17,8 +17,12 @@ trait MakesHttpRequests
      * @param  string  $uri
      * @return mixed
      */
-    public function get($uri)
+    public function get($uri, array $payload = [])
     {
+        if(empty($payload)) {
+            return $this->request('GET', $uri, $payload);
+        }
+
         return $this->request('GET', $uri);
     }
 
@@ -68,7 +72,13 @@ trait MakesHttpRequests
      */
     protected function request($verb, $uri, array $payload = [])
     {
-        $payload = ['json' => $payload];
+        if (isset($payload['json'])) {
+            $payload = ['json' => $payload['json']];
+        } elseif(isset($payload['query'])) {
+            $payload = ['query' => $payload['query']];
+        } else {
+            $payload = empty($payload) ? [] : ['form_params' => $payload];
+        }
 
         $response = $this->guzzle->request($verb, $uri, $payload);
 
@@ -79,6 +89,7 @@ trait MakesHttpRequests
         }
 
         $responseBody = (string) $response->getBody();
+
 
         return json_decode($responseBody, true) ?: $responseBody;
     }
