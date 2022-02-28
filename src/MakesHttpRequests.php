@@ -19,7 +19,7 @@ trait MakesHttpRequests
      */
     public function get($uri, array $payload = [])
     {
-        if(empty($payload)) {
+        if(!empty($payload)) {
             return $this->request('GET', $uri, $payload);
         }
 
