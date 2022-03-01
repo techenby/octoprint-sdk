@@ -24,7 +24,6 @@ class ManagesSettingsTest extends TestCase
         $this->assertCount(6, $settings);
     }
 
-    /** @test */
     public function test_updating_settings()
     {
         // $octoPrint = new OctoPrint('http://eevee.local', 'D868EB9BF75B48E88BCDF73FCD9DCAA9');
@@ -39,7 +38,6 @@ class ManagesSettingsTest extends TestCase
         $this->assertEquals('black', $settings['appearance']['color']);
     }
 
-    /** @test */
     public function test_regenerating_the_system_api_key()
     {
         $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
