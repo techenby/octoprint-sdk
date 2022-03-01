@@ -74,14 +74,21 @@ $files = $pikachu->files();
 | Home the print head                                   |                                               | `$octoPrint->home($axes)`                          |
 | Change the feedrate factor                            |                                               | `$octoPrint->feedrate($factor)`                    |
 | _Issue a tool command_                                | POST `/api/printer/tool`                      |                                                    |
-| Set the target temperature                            |                                               | `$octoPrint->targetTemp($temperature)`             |
-| Set the offset temperature                            |                                               | `$octoPrint->offsetTemp($temperature)`             |
+| Set the target tool temperature                       |                                               | `$octoPrint->targetToolTemps($targets)`            |
+| Set the offset tool temperature                       |                                               | `$octoPrint->offsetToolTemps($offsets)`             |
 | Select printer's current tool                         |                                               | `$octoPrint->selectTool($tool)`                    |
-| Retrieve the current tool state                       | GET `/api/printer/tool`                       | `$octoPrint->tool($tool)`                          |
-| Issue a bed command                                   | POST `/api/printer/bed`                       | :x:                                                |
-| Retrieve the current bed state                        | GET `/api/printer/bed`                        | `$octoPrint->bed($tool)`                           |
-| Issue a chamber command                               | POST `/api/printer/chamber`                   | :x:                                                |
-| Retrieve the current chamber state                    | GET `/api/printer/chamber`                    | `$octoPrint->chamber($tool)`                       |
+| Extrude from current tool                             |                                               | `$octoPrint->extrude($amount, $speed)`             |
+| Retract from current tool                             |                                               | `$octoPrint->retract($amount, $speed)`             |
+| Set the flow rate                                     |                                               | `$octoPrint->flowrate($factor)`                    |
+| Retrieve the current tool state                       | GET `/api/printer/tool`                       | `$octoPrint->tool()`                               |
+| _Issue a bed command_                                 | POST `/api/printer/bed`                       |                                                    |
+| Set the target bed temperature                        |                                               | `$octoPrint->targetBedTemps($targets)`             |
+| Set the offset bed temperature                        |                                               | `$octoPrint->offsetBedTemp($offsets)`              |
+| Retrieve the current bed state                        | GET `/api/printer/bed`                        | `$octoPrint->bed()`                                |
+| _Issue a chamber command_                             | POST `/api/printer/chamber`                   |                                                    |
+| Set the target chamber temperature                    |                                               | `$octoPrint->targetChamberTemps($targets)`         |
+| Set the offset chamber temperature                    |                                               | `$octoPrint->offsetChamberTemp($offsets)`          |
+| Retrieve the current chamber state                    | GET `/api/printer/chamber`                    | `$octoPrint->chamber()`                            |
 | Issue an SD command                                   | POST `/api/printer/sd`                        | :x:                                                |
 | Retrieve the current SD state                         | GET `/api/printer/sd`                         | :x:                                                |
 | Send an arbitrary command to the printer              | POST `/api/printer/command`                   | :x:                                                |
