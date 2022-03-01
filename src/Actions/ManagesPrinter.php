@@ -128,4 +128,30 @@ trait ManagesPrinter
     {
         return $this->get('printer/chamber')['chamber'];
     }
+
+    public function initSD()
+    {
+        $this->post('printer/sd', ['json' => ['command' => 'init']]);
+
+        return $this;
+    }
+
+    public function refreshSD()
+    {
+        $this->post('printer/sd', ['json' => ['command' => 'refresh']]);
+
+        return $this;
+    }
+
+    public function releaseSD()
+    {
+        $this->post('printer/sd', ['json' => ['command' => 'release']]);
+
+        return $this;
+    }
+
+    public function sd()
+    {
+        return $this->get('printer/sd');
+    }
 }

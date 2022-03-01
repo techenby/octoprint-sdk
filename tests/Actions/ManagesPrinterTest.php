@@ -231,4 +231,56 @@ class ManagesPrinterTest extends TestCase
 
         $this->assertEquals(50.221, $chamber['actual']);
     }
+
+    public function test_initializing_sd_card()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer/sd', [
+            'json' => ['command' => 'init']
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->initSD());
+    }
+
+    public function test_refreshing_sd_card()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer/sd', [
+            'json' => ['command' => 'refresh']
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->refreshSD());
+    }
+
+    public function test_releasing_sd_card()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer/sd', [
+            'json' => ['command' => 'release']
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->releaseSD());
+    }
+
+    public function test_current_sd_state()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('GET', 'printer/sd', [])->andReturn(
+            new Response(200, [], '{"ready": true}')
+        );
+
+        $sd = $octoPrint->sd();
+
+        $this->assertEquals(true, $sd['ready']);
+    }
 }

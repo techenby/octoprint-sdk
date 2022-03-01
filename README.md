@@ -89,8 +89,11 @@ $files = $pikachu->files();
 | Set the target chamber temperature                    |                                               | `$octoPrint->targetChamberTemps($targets)`         |
 | Set the offset chamber temperature                    |                                               | `$octoPrint->offsetChamberTemp($offsets)`          |
 | Retrieve the current chamber state                    | GET `/api/printer/chamber`                    | `$octoPrint->chamber()`                            |
-| Issue an SD command                                   | POST `/api/printer/sd`                        | :x:                                                |
-| Retrieve the current SD state                         | GET `/api/printer/sd`                         | :x:                                                |
+| _Issue an SD command_                                 | POST `/api/printer/sd`                        |                                                    |
+| Initialize the printer’s SD card                      |                                               | `$octoPrint->initSD()`                             |
+| Refresh the printer’s SD card                         |                                               | `$octoPrint->refreshSD()`                          |
+| Release the printer’s SD card                         |                                               | `$octoPrint->releaseSD()`                          |
+| Retrieve the current SD state                         | GET `/api/printer/sd`                         | `$octoPrint->sd()`                                 |
 | Send an arbitrary command to the printer              | POST `/api/printer/command`                   | :x:                                                |
 | Retrieve custom controls                              | GET `/api/printer/command/custom`             | :x:                                                |
 | **Printer profile operations**                                                                                                                             |
