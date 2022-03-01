@@ -94,7 +94,7 @@ $files = $pikachu->files();
 | Refresh the printer’s SD card                         |                                               | `$octoPrint->refreshSD()`                          |
 | Release the printer’s SD card                         |                                               | `$octoPrint->releaseSD()`                          |
 | Retrieve the current SD state                         | GET `/api/printer/sd`                         | `$octoPrint->sd()`                                 |
-| Send an arbitrary command to the printer              | POST `/api/printer/command`                   | :x:                                                |
+| Send an arbitrary command(s) to the printer           | POST `/api/printer/command`                   | `$octoPrint->command($command)`  `$octoPrint->commands($commands)` |
 | Retrieve custom controls                              | GET `/api/printer/command/custom`             | :x:                                                |
 | **Printer profile operations**                                                                                                                             |
 | Retrieve all printer profiles                         | GET `/api/printerprofiles`                    | :x:                                                |

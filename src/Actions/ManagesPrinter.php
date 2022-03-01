@@ -154,4 +154,26 @@ trait ManagesPrinter
     {
         return $this->get('printer/sd');
     }
+
+    public function command($command)
+    {
+        if(is_array($command)) {
+            return $this->commands($command);
+        }
+
+        $this->post('printer/command', ['json' => ['command' => $command]]);
+
+        return $this;
+    }
+
+    public function commands($commands)
+    {
+        if(is_string($commands)) {
+            return $this->command($commands);
+        }
+
+        $this->post('printer/command', ['json' => ['commands' => $commands]]);
+
+        return $this;
+    }
 }

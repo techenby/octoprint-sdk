@@ -283,4 +283,30 @@ class ManagesPrinterTest extends TestCase
 
         $this->assertEquals(true, $sd['ready']);
     }
+
+    public function test_sending_custom_command()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer/command', [
+            'json' => ['command' => 'M106']
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->command('M106'));
+    }
+
+    public function test_sending_custom_commands()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer/command', [
+            'json' => ['commands' => ['M18', 'M106 S0']]
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->commands(['M18', 'M106 S0']));
+    }
 }
