@@ -13,4 +13,9 @@ trait ManagesSettings
     {
         return $this->post('settings', ['json' => $data]);
     }
+
+    public function regenerateApiKey()
+    {
+        return $this->post('settings/apikey')['apikey'];
+    }
 }

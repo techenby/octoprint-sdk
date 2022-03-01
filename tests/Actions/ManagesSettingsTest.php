@@ -27,6 +27,7 @@ class ManagesSettingsTest extends TestCase
     /** @test */
     public function test_updating_settings()
     {
+        // $octoPrint = new OctoPrint('http://eevee.local', 'D868EB9BF75B48E88BCDF73FCD9DCAA9');
         $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
 
         $http->shouldReceive('request')->once()->with('POST', 'settings', ['json' => ['appearance' => ['color' => 'black']]])->andReturn(
@@ -36,5 +37,19 @@ class ManagesSettingsTest extends TestCase
         $settings = $octoPrint->updateSettings(['appearance' => ['color' => 'black']]);
 
         $this->assertEquals('black', $settings['appearance']['color']);
+    }
+
+    /** @test */
+    public function test_regenerating_the_system_api_key()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'settings/apikey', [])->andReturn(
+            new Response(200, [], '{"apikey": "123123123123"}')
+        );
+
+        $newKey = $octoPrint->regenerateApiKey();
+
+        $this->assertEquals('123123123123',$newKey);
     }
 }
