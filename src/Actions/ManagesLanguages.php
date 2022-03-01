@@ -2,8 +2,6 @@
 
 namespace TechEnby\OctoPrint\Actions;
 
-use TechEnby\OctoPrint\Resources\Job;
-
 trait ManagesLanguages
 {
     public function languages()

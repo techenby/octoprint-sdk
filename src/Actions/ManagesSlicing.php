@@ -2,8 +2,6 @@
 
 namespace TechEnby\OctoPrint\Actions;
 
-use TechEnby\OctoPrint\Resources\Version;
-
 trait ManagesSlicing
 {
     public function slicers()

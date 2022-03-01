@@ -115,9 +115,9 @@ $files = $pikachu->files();
 | Update Slicing Profile                                | PATCH `/api/slicing/{slicer}/profiles/{key}`  | `$octoPrint->updateSlicerProfile($slicer, $key, $data)` |
 | Delete Slicing Profile                                | DELETE `/api/slicing/{slicer}/profiles/{key}` | `$octoPrint->deleteSlicerProfile($slicer, $key)`   |
 | **System**                                                                                                                                                 |
-| List all registered system commands                   | GET `/api/system/commands`                    | :x:                                                |
-| List all registered system commands for a source      | GET `/api/system/commands/{source}`           | :x:                                                |
-| Execute a registered system command                   | POST `/api/system/commands/{source}/{action}` | :x:                                                |
+| List all registered system commands                   | GET `/api/system/commands`                    | `$octoPrint->systemCommands()`                     |
+| List all registered system commands for a source      | GET `/api/system/commands/{source}`           | `$octoPrint->systemCommand($source)`               |
+| Execute a registered system command                   | POST `/api/system/commands/{source}/{action}` | `$octoPrint->runSystemCommand($source, $action)`   |
 | **Timelapse**                                                                                                                                              |
 | Retirieve a list of timelapses and the current config | GET `/api/timelapse`                          | :x:                                                |
 | Delete a timelapse                                    | DELETE `/api/timelapse/{filename}`            | :x:                                                |
