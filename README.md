@@ -75,7 +75,7 @@ $files = $pikachu->files();
 | Change the feedrate factor                            |                                               | `$octoPrint->feedrate($factor)`                    |
 | _Issue a tool command_                                | POST `/api/printer/tool`                      |                                                    |
 | Set the target tool temperature                       |                                               | `$octoPrint->targetToolTemps($targets)`            |
-| Set the offset tool temperature                       |                                               | `$octoPrint->offsetToolTemps($offsets)`             |
+| Set the offset tool temperature                       |                                               | `$octoPrint->offsetToolTemps($offsets)`            |
 | Select printer's current tool                         |                                               | `$octoPrint->selectTool($tool)`                    |
 | Extrude from current tool                             |                                               | `$octoPrint->extrude($amount, $speed)`             |
 | Retract from current tool                             |                                               | `$octoPrint->retract($amount, $speed)`             |
@@ -103,10 +103,10 @@ $files = $pikachu->files();
 | Update an existing printer profile                    | PATCH `/api/printerprofiles/{profile}`        | `$octoPrint->updateProfile($id, $data)`            |
 | Remove an existing printer profile                    | DELETE `/api/printerprofiles/{profile}`       | `$octoPrint->deleteProfile($id)`                   |
 | **Settings**                                                                                                                                               |
-| Retireve current settings                             | GET `/api/settings`                           | :x:                                                |
-| Save settings                                         | POST `/api/settings`                          | :x:                                                |
-| Regenerate the system wide API key                    | POST `/api/settings/apikey`                   | :x:                                                |
-| Fetch template data                                   | GET `/api/settings/templates`                 | :x:                                                |
+| Retireve current settings                             | GET `/api/settings`                           | `$octoPrint->settings()`                           |
+| Save settings                                         | POST `/api/settings`                          | `$octoPrint->updateSettings($data)`                |
+| Regenerate the system wide API key                    | POST `/api/settings/apikey`                   | `$octoPrint->regenerateApiKey()`                   |
+| Fetch template data                                   | GET `/api/settings/templates`                 | Will implement when not in beta                    |
 | **Slicing**                                                                                                                                                |
 | List All Slicers and Slicing Profiles                 | GET `/api/slicing`                            | :x:                                                |
 | List Slicing Profiles of a Specific Slicer            | GET `/api/slicing/{slicer}/profiles`          | :x:                                                |

@@ -16,6 +16,7 @@ class OctoPrint
         Actions\ManagesPrinter,
         Actions\ManagesPrinterProfiles,
         Actions\ManagesServer,
+        Actions\ManagesSettings,
         Actions\ManagesVersion;
 
     /**

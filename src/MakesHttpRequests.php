@@ -82,7 +82,6 @@ trait MakesHttpRequests
 
         $responseBody = (string) $response->getBody();
 
-        // var_dump($responseBody);die;
         return json_decode($responseBody, true) ?: $responseBody;
     }
 
