@@ -97,11 +97,11 @@ $files = $pikachu->files();
 | Send an arbitrary command(s) to the printer           | POST `/api/printer/command`                   | `$octoPrint->command($command)`  `$octoPrint->commands($commands)` |
 | Retrieve custom controls                              | GET `/api/printer/command/custom`             | :x:                                                |
 | **Printer profile operations**                                                                                                                             |
-| Retrieve all printer profiles                         | GET `/api/printerprofiles`                    | :x:                                                |
-| Retrieve a single printer profile                     | GET `/api/printerprofiles/{identifier}`       | :x:                                                |
-| Add a new printer profile                             | POST `/api/printerprofiles`                   | :x:                                                |
-| Update an existing printer profile                    | PATCH `/api/printerprofiles/{profile}`        | :x:                                                |
-| Remove an existing printer profile                    | DELETE `/api/printerprofiles/{profile}`       | :x:                                                |
+| Retrieve all printer profiles                         | GET `/api/printerprofiles`                    | `$octoPrint->profiles()`                           |
+| Retrieve a single printer profile                     | GET `/api/printerprofiles/{identifier}`       | `$octoPrint->profile($id)`                         |
+| Add a new printer profile                             | POST `/api/printerprofiles`                   | `$octoPrint->createProfile($data, $basedOn)`       |
+| Update an existing printer profile                    | PATCH `/api/printerprofiles/{profile}`        | `$octoPrint->updateProfile($id, $data)`            |
+| Remove an existing printer profile                    | DELETE `/api/printerprofiles/{profile}`       | `$octoPrint->deleteProfile($id)`                   |
 | **Settings**                                                                                                                                               |
 | Retireve current settings                             | GET `/api/settings`                           | :x:                                                |
 | Save settings                                         | POST `/api/settings`                          | :x:                                                |

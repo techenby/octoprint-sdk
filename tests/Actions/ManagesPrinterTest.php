@@ -12,7 +12,6 @@ class ManagesPrinterTest extends TestCase
 {
     public function test_getting_current_printer_state()
     {
-        // $octoPrint = new OctoPrint('http://eevee.local', 'D868EB9BF75B48E88BCDF73FCD9DCAA9');
         $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
 
         $http->shouldReceive('request')->once()->with('GET', 'printer', [])->andReturn(
