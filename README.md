@@ -108,12 +108,12 @@ $files = $pikachu->files();
 | Regenerate the system wide API key                    | POST `/api/settings/apikey`                   | `$octoPrint->regenerateApiKey()`                   |
 | Fetch template data                                   | GET `/api/settings/templates`                 | Will implement when not in beta                    |
 | **Slicing**                                                                                                                                                |
-| List All Slicers and Slicing Profiles                 | GET `/api/slicing`                            | :x:                                                |
-| List Slicing Profiles of a Specific Slicer            | GET `/api/slicing/{slicer}/profiles`          | :x:                                                |
-| Retrieve Specific Profile                             | GET `/api/slicing/{slicer}/profiles/{key}`    | :x:                                                |
-| Add Slicing Profile                                   | PUT `/api/slicing/{slicer}/profiles/{key}`    | :x:                                                |
-| Update Slicing Profile                                | PATCH `/api/slicing/{slicer}/profiles/{key}`  | :x:                                                |
-| Delete Slicing Profile                                | DELETE `/api/slicing/{slicer}/profiles/{key}` | :x:                                                |
+| List All Slicers and Slicing Profiles                 | GET `/api/slicing`                            | `$octoPrint->slicers()`                            |
+| List Slicing Profiles of a Specific Slicer            | GET `/api/slicing/{slicer}/profiles`          | `$octoPrint->slicerProfiles($slicer)`              |
+| Retrieve Specific Profile                             | GET `/api/slicing/{slicer}/profiles/{key}`    | `$octoPrint->slicerProfile($slicer, $key)`         |
+| Add Slicing Profile                                   | PUT `/api/slicing/{slicer}/profiles/{key}`    | `$octoPrint->createSlicerProfile($slicer, $key, $data)` |
+| Update Slicing Profile                                | PATCH `/api/slicing/{slicer}/profiles/{key}`  | `$octoPrint->updateSlicerProfile($slicer, $key, $data)` |
+| Delete Slicing Profile                                | DELETE `/api/slicing/{slicer}/profiles/{key}` | `$octoPrint->deleteSlicerProfile($slicer, $key)`   |
 | **System**                                                                                                                                                 |
 | List all registered system commands                   | GET `/api/system/commands`                    | :x:                                                |
 | List all registered system commands for a source      | GET `/api/system/commands/{source}`           | :x:                                                |

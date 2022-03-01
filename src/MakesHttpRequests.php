@@ -39,6 +39,18 @@ trait MakesHttpRequests
     }
 
     /**
+     * Make a PATCH request to OctoPrint servers and return the response.
+     *
+     * @param  string  $uri
+     * @param  array  $payload
+     * @return mixed
+     */
+    public function patch($uri, array $payload = [])
+    {
+        return $this->request('PATCH', $uri, $payload);
+    }
+
+    /**
      * Make a PUT request to OctoPrint servers and return the response.
      *
      * @param  string  $uri
