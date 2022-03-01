@@ -77,11 +77,11 @@ $files = $pikachu->files();
 | Set the target temperature                            |                                               | `$octoPrint->targetTemp($temperature)`             |
 | Set the offset temperature                            |                                               | `$octoPrint->offsetTemp($temperature)`             |
 | Select printer's current tool                         |                                               | `$octoPrint->selectTool($tool)`                    |
-| Retrieve the current tool state                       | GET `/api/printer/tool`                       | :x:                                                |
+| Retrieve the current tool state                       | GET `/api/printer/tool`                       | `$octoPrint->tool($tool)`                          |
 | Issue a bed command                                   | POST `/api/printer/bed`                       | :x:                                                |
-| Retrieve the current bed state                        | GET `/api/printer/bed`                        | :x:                                                |
+| Retrieve the current bed state                        | GET `/api/printer/bed`                        | `$octoPrint->bed($tool)`                           |
 | Issue a chamber command                               | POST `/api/printer/chamber`                   | :x:                                                |
-| Retrieve the current chamber state                    | GET `/api/printer/chamber`                    | :x:                                                |
+| Retrieve the current chamber state                    | GET `/api/printer/chamber`                    | `$octoPrint->chamber($tool)`                       |
 | Issue an SD command                                   | POST `/api/printer/sd`                        | :x:                                                |
 | Retrieve the current SD state                         | GET `/api/printer/sd`                         | :x:                                                |
 | Send an arbitrary command to the printer              | POST `/api/printer/command`                   | :x:                                                |

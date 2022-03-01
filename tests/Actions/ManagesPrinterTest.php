@@ -23,4 +23,43 @@ class ManagesPrinterTest extends TestCase
 
         $this->assertEquals(25.62, $printer->temperature['bed']['actual']);
     }
+
+    public function test_jogging_print_head()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer', [
+            'json' => ['command' => 'jog', 'x' => 5, 'y' => 0, 'z' => 0, 'absolute' => true]
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->jog(5, 0, 0, true));
+    }
+
+    public function test_homeing_print_head()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer', [
+            'json' => ['command' => 'home', 'axes' => ['x', 'y', 'z']]
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->home(['x', 'y', 'z']));
+    }
+
+    public function test_changing_feedrate()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'printer', [
+            'json' => ['command' => 'feedrate', 'factor' => 20]
+        ])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->feedrate(20));
+    }
 }

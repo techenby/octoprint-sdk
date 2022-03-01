@@ -72,14 +72,6 @@ trait MakesHttpRequests
      */
     protected function request($verb, $uri, array $payload = [])
     {
-        if (isset($payload['json'])) {
-            $payload = ['json' => $payload['json']];
-        } elseif(isset($payload['query'])) {
-            $payload = ['query' => $payload['query']];
-        } else {
-            $payload = empty($payload) ? [] : ['form_params' => $payload];
-        }
-
         $response = $this->guzzle->request($verb, $uri, $payload);
 
         $statusCode = $response->getStatusCode();
