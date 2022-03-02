@@ -124,23 +124,6 @@ $files = $pikachu->files();
 | Issue a command for an unrendered timelapse           | POST `/api/timelapse/unrendered/{name}`       | `$octoPrint->renderTimelapse($name)`               |
 | Delete an unrendered timelapse                        | DELETE `/api/timelapse/unrendered/{name}`     | `$octoPrint->deleteTimelapse($filename, true)`     |
 | Change current timelapse config                       | POST `/api/timelapse`                         | `$octoPrint->updateTimelapseSettings($data)`       |
-| **Access Control**                                                                                                                                         |
-| List all permissions                                  | GET `/api/access/permissions`                 | :x:                                                |
-| Get group list                                        | GET `/api/access/groups`                      | :x:                                                |
-| Add new group                                         | POST `/api/access/groups`                     | :x:                                                |
-| Retrieve a group                                      | GET `/api/access/groups/{key}`                | :x:                                                |
-| Update a group                                        | PUT `/api/access/groups/{key}`                | :x:                                                |
-| Delete a group                                        | DELETE `/api/access/groups/{key}`             | :x:                                                |
-| Retrieve a list of users                              | GET `/api/access/users`                       | :x:                                                |
-| Retrieve a user                                       | GET `/api/access/users/{username}`            | :x:                                                |
-| Add a new user                                        | POST `/api/access/users`                      | :x:                                                |
-| Update a user                                         | PUT `/api/access/users/{username}`            | :x:                                                |
-| Delete a user                                         | DELETE `/api/access/users/{username}`         | :x:                                                |
-| Change a user's password                              | PUT `/api/access/users/{username}/password`   | :x:                                                |
-| Get a user's settings                                 | GET `/api/access/users/{username}/settings`   | :x:                                                |
-| Update a user's settings                              | PATCH `/api/access/users/{username}/settings` | :x:                                                |
-| Regenerate a user's api key                           | POST `/api/access/users/{username}/apikey`    | :x:                                                |
-| Delete a user's api key                               | DELETE `/api/access/users/{username}/apikey`  | :x:                                                |
 
 ## Contributing
 
