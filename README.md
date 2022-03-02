@@ -119,11 +119,11 @@ $files = $pikachu->files();
 | List all registered system commands for a source      | GET `/api/system/commands/{source}`           | `$octoPrint->systemCommand($source)`               |
 | Execute a registered system command                   | POST `/api/system/commands/{source}/{action}` | `$octoPrint->runSystemCommand($source, $action)`   |
 | **Timelapse**                                                                                                                                              |
-| Retirieve a list of timelapses and the current config | GET `/api/timelapse`                          | :x:                                                |
-| Delete a timelapse                                    | DELETE `/api/timelapse/{filename}`            | :x:                                                |
-| Issue a command for an unrendered timelapse           | POST `/api/timelapse/unrendered/{name}`       | :x:                                                |
-| Delete an unrendered timelapse                        | DELETE `/api/timelapse/unrendered/{name}`     | :x:                                                |
-| Change current timelapse config                       | POST `/api/timelapse`                         | :x:                                                |
+| Retirieve a list of timelapses and the current config | GET `/api/timelapse`                          | `$octoPrint->timelapses()`  `$octoPrint->timelapseConfig()` |
+| Delete a timelapse                                    | DELETE `/api/timelapse/{filename}`            | `$octoPrint->deleteTimelapse($filename)`           |
+| Issue a command for an unrendered timelapse           | POST `/api/timelapse/unrendered/{name}`       | `$octoPrint->renderTimelapse($name)`               |
+| Delete an unrendered timelapse                        | DELETE `/api/timelapse/unrendered/{name}`     | `$octoPrint->deleteTimelapse($filename, true)`     |
+| Change current timelapse config                       | POST `/api/timelapse`                         | `$octoPrint->updateTimelapseSettings($data)`       |
 | **Access Control**                                                                                                                                         |
 | List all permissions                                  | GET `/api/access/permissions`                 | :x:                                                |
 | Get group list                                        | GET `/api/access/groups`                      | :x:                                                |

@@ -19,6 +19,7 @@ class OctoPrint
         Actions\ManagesSettings,
         Actions\ManagesSlicing,
         Actions\ManagesSystem,
+        Actions\ManagesTimelapses,
         Actions\ManagesVersion;
 
     /**
