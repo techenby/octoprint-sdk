@@ -51,7 +51,7 @@ $files = $pikachu->files();
 | **File operations**                                                                                                                                        |
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
 | Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
-| Upload file                                           | POST `/api/files/{location}`                  |                                                    |
+| Upload file                                           | POST `/api/files/{location}`                  | `$octoPrint->uplaodFile($location, $path, $contents)` |
 | Retrieve a specific file's or folder's information    | GET `/api/files/{location}/{filename}`        | `$octoPrint->file($location, $path)`               |
 | Issue a file command                                  | POST `/api/files/{location}/{path}`           |                                                    |
 | Select a file                                         |                                               | `$octoPrint->selectFile($location, $path)`         |
