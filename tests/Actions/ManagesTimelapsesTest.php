@@ -18,7 +18,7 @@ class ManagesTimelapsesTest extends TestCase
             new Response(200, [], '{"config":{"fps":25,"interval":10,"postRoll":0,"type":"timed"},"enabled":true,"files":[{"bytes":6059241,"date":"2022-01-22 18:58","name":"CE3_clamp protector tri_20220122183722.mp4","size":"5.8MB","url":"/downloads/timelapse/CE3_clamp%20protector%20tri_20220122183722.mp4"},{"bytes":597178,"date":"2022-02-23 10:04","name":"CE3_SDD Boxes - full_20220223100158-fail.mp4","size":"583.2KB","url":"/downloads/timelapse/CE3_SDD%20Boxes%20-%20full_20220223100158-fail.mp4"}]}')
         );
 
-        $timelapses = $octoPrint->timelapses(true);
+        $timelapses = $octoPrint->timelapses();
 
         $this->assertCount(2, $timelapses);
     }
