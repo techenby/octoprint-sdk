@@ -52,10 +52,14 @@ $files = $pikachu->files();
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
 | Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
 | Upload file                                           | POST `/api/files/{location}`                  |                                                    |
-| Create folder                                         | POST `/api/files/{location}`                  |                                                    |
 | Retrieve a specific file's or folder's information    | GET `/api/files/{location}/{filename}`        | `$octoPrint->file($location, $path)`               |
-| Issue a file command                                  | POST `/api/files/{location}/{path}`           | :x:                                                |
-| Delete file                                           | DELETE `/api/files/{location}/{path}`         | :x:                                                |
+| Issue a file command                                  | POST `/api/files/{location}/{path}`           |                                                    |
+| Select a file                                         |                                               | `$octoPrint->selectFile($location, $path)`         |
+| Unselect a file                                       |                                               | `$octoPrint->unselectFile($location, $path)`       |
+| Slice a file                                          |                                               | `$octoPrint->sliceFile($location, $path, $data)`   |
+| Copy a file                                           |                                               | `$octoPrint->copyFile($location, $path, $destination)` |
+| Move a file                                           |                                               | `$octoPrint->moveFile($location, $path, $destination)` |
+| Delete file                                           | DELETE `/api/files/{location}/{path}`         | `$octoPrint->deleteFile($location, $path)`         |
 | **Job operations**                                                                                                                                         |
 | _Issue a job command_                                 | POST `/api/job`                               |                                                    |
 | Start the print of the currently selected file        |                                               | `$octoPrint->start()`                              |

@@ -74,4 +74,72 @@ class ManagesFilesTest extends TestCase
 
         $this->assertEquals('whistle_v2.gcode', $file->name);
     }
+
+    public function test_selecting_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'files/local/whistle_v2.gcode', ['json' => ['command' => 'select', 'print' => true]])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->selectFile('local', 'whistle_v2.gcode', true));
+    }
+
+    public function test_unselecting_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'files/local/whistle_v2.gcode', ['json' => ['command' => 'unselect']])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertEquals($octoPrint, $octoPrint->unselectFile('local', 'whistle_v2.gcode'));
+    }
+
+    public function test_slicing_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $data = ['slicer' => 'cura', 'gcode' => 'some_mode.first_try.gcode', 'printerProfile' => 'my_custom_reprap', 'profile' => 'high_quality', 'profile.infill' => 75, 'profile.fill_density' => 15, 'position' => ['x' => 100, 'y' => 100], 'print' => true];
+
+        $http->shouldReceive('request')->once()->with('POST', 'files/local/some_folder/some_model.stl', ['json' => array_merge(['command' => 'slice'], $data)])->andReturn(
+            new Response(202, [], '{"origin": "local","name": "some_model.first_try.gcode","path": "some_folder/some_model.first_try.gcode","refs": {"download": "http://example.com/downloads/files/local/some_folder/some_model.first_try.gcode","resource": "http://example.com/api/files/local/some_folder/some_model.first_try.gcode"}}')
+        );
+
+        $this->assertCount(4, $octoPrint->sliceFile('local', 'some_folder/some_model.stl', $data));
+    }
+
+    public function test_copying_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'files/local/some_folder/some_model.gcode', ['json' => ['command' => 'copy', 'destination' => 'some_other_folder/subfolder']])->andReturn(
+            new Response(201, [], '{"origin": "local","name": "some_model.gcode","path": "some_other_folder/subfolder/some_model.gcode","refs": {"download": "http://example.com/downloads/files/local/some_other_folder/subfolder/some_model.gcode","resource": "http://example.com/api/files/local/some_other_folder/subfolder/some_model.gcode"}}')
+        );
+
+        $this->assertCount(4, $octoPrint->copyFile('local', 'some_folder/some_model.gcode', 'some_other_folder/subfolder'));
+    }
+
+    public function test_moving_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('POST', 'files/local/some_folder/some_model.gcode', ['json' => ['command' => 'move', 'destination' => 'some_other_folder/subfolder']])->andReturn(
+            new Response(201, [], '{"origin": "local","name": "and_a_subfolder","path": "some_other_folder/and_a_subfolder","refs": {"resource": "http://example.com/api/files/local/some_other_folder/and_a_subfolder"}}')
+        );
+
+        $this->assertCount(4, $octoPrint->moveFile('local', 'some_folder/some_model.gcode', 'some_other_folder/subfolder'));
+    }
+
+    public function test_deleting_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('request')->once()->with('DELETE', 'files/local/whistle_v2.gcode', [])->andReturn(
+            new Response(204, [])
+        );
+
+        $this->assertNull($octoPrint->deleteFile('local', 'whistle_v2.gcode'));
+    }
 }
