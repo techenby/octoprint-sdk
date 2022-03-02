@@ -75,6 +75,20 @@ class ManagesFilesTest extends TestCase
         $this->assertEquals('whistle_v2.gcode', $file->name);
     }
 
+    public function test_uploading_file()
+    {
+        $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));
+
+        $http->shouldReceive('post')->once()->with('files/local', ['multipart' => [
+            ['name' => 'path', 'contents' => 'some_folder/subfolder/'],
+            ['name' => 'file', 'filename' => 'whistle_v2.gcode', 'contents' => 'M109 TO S220.00000']
+        ]])->andReturn(
+            new Response(200, [], '{"done":true,"files":{"local":{"name":"whistle_v2.gcode","origin":"local","path":"some_folder/subfolder/whistle_v2.gcode","refs":{"download":"http://eevee.local/downloads/files/local/some_folder/subfolder/whistle_v2.gcode","resource":"http://eevee.local/api/files/local/some_folder/subfolder/whistle_v2.gcode"}}}}')
+        );
+
+        $this->assertTrue($octoPrint->uploadFile('local', 'some_folder/subfolder/whistle_v2.gcode', 'M109 TO S220.00000')['done']);
+    }
+
     public function test_selecting_file()
     {
         $octoPrint = new OctoPrint('http://eevee.local', '123', $http = Mockery::mock(Client::class));

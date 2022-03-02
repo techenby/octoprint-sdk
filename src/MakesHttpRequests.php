@@ -74,6 +74,31 @@ trait MakesHttpRequests
         return $this->request('DELETE', $uri, $payload);
     }
 
+    public function upload($uri, $path, $contents)
+    {
+        if(str_contains($path, '/')) {
+            $filename = basename($path);
+            $path = str_replace($filename, '', $path);
+
+            $response = $this->guzzle->post($uri, [
+                'multipart' => [
+                    ['name' => 'path', 'contents' => $path],
+                    ['name' => 'file', 'filename' => $filename, 'contents' => $contents]
+                ]
+            ]);
+        } else {
+            $response = $this->guzzle->post($uri, [
+                'multipart' => [
+                    ['name' => 'file', 'filename' => $path, 'contents' => $contents]
+                ]
+            ]);
+        }
+
+        $responseBody = (string) $response->getBody();
+
+        return json_decode($responseBody, true) ?: $responseBody;
+    }
+
     /**
      * Make request to OctoPrint servers and return the response.
      *
@@ -93,9 +118,6 @@ trait MakesHttpRequests
         }
 
         $responseBody = (string) $response->getBody();
-
-        // var_dump($responseBody);die;
-        // var_dump(json_decode($responseBody, true));die;
 
         return json_decode($responseBody, true) ?: $responseBody;
     }

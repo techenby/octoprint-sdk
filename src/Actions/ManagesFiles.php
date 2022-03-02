@@ -24,6 +24,11 @@ trait ManagesFiles
         return new File($this->get("files/$location/$path"));
     }
 
+    public function uploadFile($location, $path, $contents)
+    {
+        return $this->upload("files/{$location}", $path, $contents);
+    }
+
     public function selectFile($location, $path, $print = false)
     {
         $this->post("files/{$location}/{$path}", ['json' => ['command' => 'select', 'print' => $print]]);
