@@ -9,19 +9,15 @@ trait ManagesFiles
     public function files($recursive = true, $location = null)
     {
         if($location) {
-            return $this->transformCollection(
-                $this->get("files/{$location}", ['query' => ['recursive' => $recursive]])['files'], File::class
-            );
+            return $this->get("files/{$location}", ['query' => ['recursive' => $recursive]])['files'];
         }
 
-        return $this->transformCollection(
-            $this->get('files', ['query' => ['recursive' => $recursive]])['files'], File::class
-        );
+        return $this->get('files', ['query' => ['recursive' => $recursive]])['files'];
     }
 
     public function file($location, $path)
     {
-        return new File($this->get("files/$location/$path"));
+        return $this->get("files/$location/$path");
     }
 
     public function uploadFile($location, $path, $contents)

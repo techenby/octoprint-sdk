@@ -72,7 +72,7 @@ class ManagesFilesTest extends TestCase
 
         $file = $octoPrint->file('local', 'whistle_v2.gcode');
 
-        $this->assertEquals('whistle_v2.gcode', $file->name);
+        $this->assertEquals('whistle_v2.gcode', $file['name']);
     }
 
     public function test_uploading_file()
