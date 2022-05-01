@@ -111,16 +111,7 @@ trait MakesHttpRequests
     protected function request($verb, $uri, array $payload = [])
     {
         if(getenv('APP_ENV') === 'testing') {
-            $parts = explode('/', $uri);
-
-            if(isset($parts[1])) {
-                $singular = Str::singular($parts[0]);
-                $lower = strtolower($verb);
-                return json_decode(file_get_contents(__DIR__ . "/responses/{$lower}/{$singular}.json"), true);
-            } else {
-                $lower = strtolower($verb);
-                return json_decode(file_get_contents(__DIR__ . "/responses/{$lower}/{$parts[0]}.json"), true);
-            }
+            return $this->fakeRequest($verb, $uri, $payload);
         }
 
         $response = $this->guzzle->request($verb, $uri, $payload);
@@ -191,5 +182,29 @@ trait MakesHttpRequests
         }
 
         throw new TimeoutException($output);
+    }
+
+    private function fakeRequest($verb, $uri, $payload)
+    {
+        $baseUrl = (string) $this->guzzle->getConfig('base_uri');
+        $parts = explode('/', $uri);
+        $result = 'good';
+        $verb = strtolower($verb);
+        $type = $parts[0];
+
+        if (isset($parts[1])) {
+            $type = Str::singular($type);
+        }
+        if (Str::contains($baseUrl, 'bad')) {
+            $result = 'bad';
+        }
+
+        $response = json_decode(file_get_contents(__DIR__ . "/responses/{$result}/{$verb}/{$type}.json"), true);
+
+        if($result === 'bad') {
+            return throw new Exception((string) $response);
+        }
+
+        return $response;
     }
 }
