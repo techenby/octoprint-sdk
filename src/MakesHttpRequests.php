@@ -3,6 +3,7 @@
 namespace TechEnby\OctoPrint;
 
 use Exception;
+use Illuminate\Support\Str;
 use TechEnby\OctoPrint\Exceptions\FailedActionException;
 use TechEnby\OctoPrint\Exceptions\NotFoundException;
 use TechEnby\OctoPrint\Exceptions\TimeoutException;
@@ -109,6 +110,19 @@ trait MakesHttpRequests
      */
     protected function request($verb, $uri, array $payload = [])
     {
+        if(getenv('APP_ENV') === 'testing') {
+            $parts = explode('/', $uri);
+
+            if(isset($parts[1])) {
+                $singular = Str::singular($parts[0]);
+                $lower = strtolower($verb);
+                return json_decode(file_get_contents(__DIR__ . "/responses/{$lower}/{$singular}.json"), true);
+            } else {
+                $lower = strtolower($verb);
+                return json_decode(file_get_contents(__DIR__ . "/responses/{$lower}/{$parts[0]}.json"), true);
+            }
+        }
+
         $response = $this->guzzle->request($verb, $uri, $payload);
 
         $statusCode = $response->getStatusCode();

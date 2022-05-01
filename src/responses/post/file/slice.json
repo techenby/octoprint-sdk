@@ -1,0 +1,9 @@
+{
+    "origin": "local",
+    "name": "some_model.first_try.gcode",
+    "path": "some_folder/some_model.first_try.gcode",
+    "refs": {
+      "download": "http://example.com/downloads/files/local/some_folder/some_model.first_try.gcode",
+      "resource": "http://example.com/api/files/local/some_folder/some_model.first_try.gcode"
+    }
+}
