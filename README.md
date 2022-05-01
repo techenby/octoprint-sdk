@@ -5,8 +5,6 @@
 <a href="https://packagist.org/packages/techenby/octoprint-sdk"><img src="https://img.shields.io/packagist/v/techenby/octoprint-sdk" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/techenby/octoprint-sdk"><img src="https://img.shields.io/packagist/l/techenby/octoprint-sdk" alt="License"></a>
 
-WORK IN PROGRESS
-
 The [OctoPrint](https://octoprint.org/) SDK provides an expressive interface for interacting with [OctoPrint's Rest API](https://docs.octoprint.org/en/master/api/files.html) and managing OctoPrint instances servers. The structure of this repository is based on the [Laravel Forge SDK](https://github.com/laravel/forge-sdk).
 
 ## Installation
@@ -50,7 +48,7 @@ $files = $pikachu->files();
 | Disconnect OctoPrint from printer                     |                                               | `$octoPrint->dissconect()`                         |
 | **File operations**                                                                                                                                        |
 | Retrieve all files                                    | GET `/api/files`                              | `$octoPrint->files()`                              |
-| Retrieve fiels from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
+| Retrieve files from specific location                 | GET `/api/files/{location}`                   | `$octoPrint->files($location)`                     |
 | Upload file                                           | POST `/api/files/{location}`                  | `$octoPrint->uplaodFile($location, $path, $contents)` |
 | Retrieve a specific file's or folder's information    | GET `/api/files/{location}/{filename}`        | `$octoPrint->file($location, $path)`               |
 | Issue a file command                                  | POST `/api/files/{location}/{path}`           |                                                    |
