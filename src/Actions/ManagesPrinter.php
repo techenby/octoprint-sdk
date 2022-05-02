@@ -13,14 +13,14 @@ trait ManagesPrinter
 
     public function jog($x = 0, $y = 0, $z = 0, $absolute = null, $speed = null)
     {
-        $default = ['command' => 'jog', 'x' => $x, 'y' => $y, 'z' => $z, ];
+        $data = ['command' => 'jog', 'x' => $x, 'y' => $y, 'z' => $z, ];
 
         if($absolute !== null && $speed !== null) {
-            $data = array_merge($default, ['absolute' => $absolute], ['speed' => $speed]);
+            $data = array_merge($data, ['absolute' => $absolute], ['speed' => $speed]);
         } elseif($absolute !== null) {
-            $data = array_merge($default, ['absolute' => $absolute]);
+            $data = array_merge($data, ['absolute' => $absolute]);
         } elseif($speed !== null) {
-            $data = array_merge($default, ['speed' => $speed]);
+            $data = array_merge($data, ['speed' => $speed]);
         }
 
         $this->post('printer/printhead', ['json' => $data]);

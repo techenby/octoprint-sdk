@@ -199,7 +199,7 @@ trait MakesHttpRequests
             $result = 'bad';
         }
 
-        $response = json_decode(file_get_contents(__DIR__ . "/responses/{$result}/{$verb}/{$type}.json"), true);
+        $response = json_decode(file_get_contents(__DIR__ . "/responses/{$result}/{$verb}/{$type}.json"), true) ?? '';
 
         if($result === 'bad') {
             return throw new Exception((string) $response);
