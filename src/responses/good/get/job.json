@@ -1,0 +1,24 @@
+{
+    "job": {
+      "file": {
+        "name": "whistle_v2.gcode",
+        "origin": "local",
+        "size": 1468987,
+        "date": 1378847754
+      },
+      "estimatedPrintTime": 8811,
+      "filament": {
+        "tool0": {
+          "length": 810,
+          "volume": 5.36
+        }
+      }
+    },
+    "progress": {
+      "completion": 0.2298468264184775,
+      "filepos": 337942,
+      "printTime": 276,
+      "printTimeLeft": 912
+    },
+    "state": "Printing"
+  }
